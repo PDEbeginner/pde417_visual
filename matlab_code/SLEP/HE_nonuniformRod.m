@@ -8,7 +8,7 @@ a  = 0;  b = 3*pi;   % domain [a,b]
 N  = 99;           % number of x points excluding both ends
 dx = (b-a)/(N+1);  % "infitasimal" x
 x  = a:dx:b;       % domain
-f  = @(x) acos(cos(x))+1;
+f  = @(x) acos(cos(x))+1; %initial condition
 
 %set thermal coefficient of the rod
 c = @(x) x+6; %specific heat
@@ -17,7 +17,7 @@ K0 = @(x) 4*x+1; %thermal conductivity
 dK0dx = @(x) x*0+4;
 alpha = @(x) cos(x); %dependance of Q on u   Q = alpha*u
 %% Evaluate the Spatial part
-%evaluate SLEP
+%evaluate SLEP:
 % -[p(x)*y']'-alpha*y = lambda*r(x)*y      
 %y is the eigen function and lambda is eigenvalue
 P = K0(x);
@@ -30,7 +30,7 @@ end
 c_x = c(x);
 rho_x = rho(x);
 R        = c_x .* rho_x; % evaluate R(x), the weight function
-[v,e]    = SLEP(N,x,P,dPdx,Q,R,'mixed'); % solve SLEP, vector and eigenvaluse (ascending)
+[v,e]    = SLEP(N,x,P,dPdx,Q,R,'mixed'); % solve SLEP using SLEP.m. Get eigenvector and eigenvalues (ascending order)
 plot(x',v(:,1:3),'linewidth',2)
 legend('\phi_1', '\phi_2','\phi_3','location','best')
 orthogonal = zeros(length(v(1,:)),length(v(1,:)));
@@ -41,7 +41,7 @@ for i=1:length(v(1,:))
     end
 end
 figure;
-image(orthogonal,'CDataMapping','scaled')
+image(orthogonal,'CDataMapping','scaled') %show orthogonality
 c=colorbar;
 %% Combine the Spatial and time parts
 %u = sum(an*v(x)*y_n^(-lambna_n*t)
