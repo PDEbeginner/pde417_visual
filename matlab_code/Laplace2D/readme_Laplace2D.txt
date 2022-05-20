@@ -1,0 +1,1 @@
+Laplace_circle.mThis code demonstrates Laplace equation on circular disk with radius a=1. Calls on LaplaceSol_circle.m. LaplaceSol_circle.m              Solves Laplace equation on circular disk. Laplace_rec.mThis code demonstrates Laplace equation on rectangle with length L and height H. Calls on LaplaceSol_rec.mLaplaceSol_rec.m	Solces Laplace equation on rectangle
