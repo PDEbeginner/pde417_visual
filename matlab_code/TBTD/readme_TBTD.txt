@@ -1,0 +1,1 @@
+TBTD.mThis code demonstrates the divergence of term-by-term differentiation (TBTD) of a Fourier since series f=x. The convergence of the FS and the divergence of the TBTD of the FS are shown. plotsFS_TBTD.mThis function is called inside TBTD.m and is used to plot a series.  
